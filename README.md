@@ -77,9 +77,9 @@ ToDo List:
 
 - [ ] Hospedar a página web no GitHub Pages.
 
-- [ ] Atualizar a ferramenta de exportaç'ão de currículo em PDF.
+- [ ] Atualizar a ferramenta de exportação de currículo em PDF.
 
-- [ ] Desenvolver a pipiline de atualização da página web e do currículo, simplificando o processo de atualização dos conteúdos.
+- [ ] Desenvolver a pipeline de atualização da página web e do currículo, simplificando o processo de atualização dos conteúdos.
 
 - [ ] Documentar o processo de desenvolvimento e a estrutura do projeto (bibliotecas, arquivos, pastas, etc).
 
