@@ -16,10 +16,15 @@ AutomatedCV/
 │   │   ├── education.csv # Formação acadêmica
 │   │   ├── personal_data.json # Informações pessoais do autor
 │   │   ├── professional_experience.csv # Experiências profissionais/acadêmicas
+│   │   ├── students.csv # Orientações de alunos
 │   │   └── teaching_experience.csv # Experiências de ensino
 │   │
 │   ├── images/ # Imagens utilizadas no currículo
 │   │   └── profile.jpg # Foto do autor
+│   │
+│   ├── full_bibtex_files/ # Arquivos BibTeX completos com todas as publicações e seminários
+│   │   ├── publication.bib # Arquivo BibTeX das publicações
+│   │   └── talk.bib # Arquivo BibTeX dos seminários e palestras
 │   │
 │   ├── publication/ # Arquivos BibTeX das publicações
 │   │   └── AUTHORLASTNAME_YEAR_TITLE/ # Pasta de uma publicação
