@@ -10,6 +10,7 @@ A estrutura de arquivos do projeto é a seguinte:
 
 ```bash
 AutomatedCV/
+│
 ├── static/ # Arquivos BibTeX e outros conteúdos necessários para a geração do currículo
 │   │
 │   ├── author_data/ # Informações pessoais do autor
@@ -22,21 +23,28 @@ AutomatedCV/
 │   ├── images/ # Imagens utilizadas no currículo
 │   │   └── profile.jpg # Foto do autor
 │   │
-│   ├── complete_bibtex_files/ # Arquivos BibTeX completos com todas as publicações e seminários
-│   │   ├── publication.bib # Arquivo BibTeX das publicações
-│   │   └── talk.bib # Arquivo BibTeX dos seminários e palestras
-│   │
 │   ├── publication/ # Arquivos BibTeX das publicações
-│   │   └── AUTHORLASTNAME_YEAR_TITLE/ # Pasta de uma publicação
-│   │   │   ├── AUTHORLASTNAME_YEAR_TITLE.bib # Arquivo BibTeX da publicação
-│   │   │   ├── AUTHORLASTNAME_YEAR_TITLE.json # Arquivo json da publicação
-│   │   └── ...
+│   │   │
+│   │   ├── bibtex/ # Arquivos BibTeX das publicações
+│   │   │   ├── AUTHORLASTNAME_YEAR_TITLE.bib # Arquivo BibTeX de uma publicação individual
+│   │   │   └── ...
+│   │   │
+│   │   ├── json/ # Arquivos BibTeX das publicações
+│   │   │   ├── publications.json # Arquivo json das publicações
+│   │   │   └── preprints.json # Arquivo json dos preprints (artigos não publicados)
+│   │   │
+│   │   └── publication_references.bib # Arquivo BibTeX com todas as publicações (a ser editado manualmente)
 │   │
 │   └── talk/ # Arquivos BibTeX dos seminários e palestras
-│       ├── INDEX_YEAR_TITLE/ # Pasta de um seminário/palestra
-│       │   ├── INDEX_YEAR_TITLE.bib # Arquivo BibTeX do seminário/palestra
-│       │   ├── INDEX_YEAR_TITLE.json # Arquivo json do seminário/palestra
-│       └── ...
+│       │
+│       ├── bibtex/ # Arquivos BibTeX dos seminários/palestras
+│       │   ├── INDEX_YEAR_TITLE.bib # Arquivo BibTeX do seminário/palestra individual
+│       │   └── ...
+│       │
+│       ├──json/ # Arquivos BibTeX dos seminários/palestras
+│       │   └── talks.json # Arquivo json dos seminários/palestras
+│       │
+│       └── talk_references.bib # Arquivo BibTeX com todos os seminários/palestras (a ser editado manualmente)
 │
 ├── scripts/ # Scripts de automação (Python)
 │   ├── run.py # Script principal de automação
