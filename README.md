@@ -14,14 +14,17 @@ AutomatedCV/
 ├── static/ # Arquivos BibTeX e outros conteúdos necessários para a geração do currículo
 │   │
 │   ├── author_data/ # Informações pessoais do autor
+│   │   ├── awards.csv # Prêmios e distinções
 │   │   ├── education.csv # Formação acadêmica
+│   │   ├── grants.csv # Bolsas e financiamentos
 │   │   ├── personal_data.json # Informações pessoais do autor
 │   │   ├── professional_experience.csv # Experiências profissionais/acadêmicas
-│   │   ├── alumni.csv # Orientações de alunos
+│   │   ├── students.csv # Alunos orientados
+│   │   ├── RodrigoSTarginoCV.pdf # Currículo em PDF
 │   │   └── teaching_experience.csv # Experiências de ensino
 │   │
 │   ├── images/ # Imagens utilizadas no currículo
-│   │   └── profile.jpg # Foto do autor
+│   │   └── profile_picture.jpg # Foto do autor
 │   │
 │   ├── publication/ # Arquivos BibTeX das publicações
 │   │   │
@@ -92,6 +95,12 @@ ToDo List:
 - [ ] Documentar o processo de desenvolvimento e a estrutura do projeto (bibliotecas, arquivos, pastas, etc).
 
 - [ ] Criar o manual de instruções para a atualização dos conteúdos.
+
+## Reminders
+
+- [ ] Desenvolver ícone para a página web (.ico)
+
+- [ ] Alterar link do cv após o deploy (transferência de repositório)
 
 ## Contato
 
