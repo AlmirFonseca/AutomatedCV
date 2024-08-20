@@ -18,6 +18,8 @@ personalData.interests.forEach(interest => {
 document.addEventListener('DOMContentLoaded', function() {
     displayCSVAsTable("../author_data/education.csv", 'educationTable');
     displayCSVAsTable("../author_data/professional_experience.csv", 'professionalTable');
+    displayCSVAsTable("../author_data/students.csv", 'alumniTable');
+    displayCSVAsTable("../author_data/awards.csv", 'awardsTable');
 });
 
 function displayCSVAsTable(csvPath, tableId) {
@@ -54,7 +56,7 @@ function textToTable(csvText, tableId) {
         // Process each cell in the line
         cells.forEach(cellText => {
             const cell = index === 0 ? document.createElement('th') : document.createElement('td');
-            cell.textContent = cellText;
+            cell.textContent = cellText.replace(/,/g, ''); // Remove remaining commas
             row.appendChild(cell);
         });
     });
