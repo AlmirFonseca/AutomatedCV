@@ -1,0 +1,26 @@
+[
+    {
+        "year": "2008",
+        "title": "Bayesian selection for Heston models with volatilities determined by Fourier series method",
+        "journal": "Research In Options (RiO)*,  Angra dos Reis, Brazil.",
+        "author": "",
+        "ENTRYTYPE": "article",
+        "ID": "pres1"
+    },
+    {
+        "year": "2015",
+        "title": "Sequential Monte Carlo Samplers for capital allocation under copula-dependent risk models",
+        "journal": "Congress on Insurance: Mathematics and Economics,  Liverpool, UK.",
+        "author": "",
+        "ENTRYTYPE": "article",
+        "ID": "pres13"
+    },
+    {
+        "year": "2009",
+        "title": "Calibration of the Heston model by Fourier series method",
+        "journal": "Fourth Brazilian Conference on Statistical Modelling in Insurance and Finance,  Maresias, Brazil.",
+        "author": "",
+        "ENTRYTYPE": "article",
+        "ID": "pres2"
+    }
+]

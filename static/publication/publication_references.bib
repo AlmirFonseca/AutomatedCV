@@ -1,0 +1,46 @@
+@article{benezet2021transform,
+ abstract = {In financial risk management, modelling dependency within a random vector X is crucial, a standard approach is the use of a copula model. Say the copula model can be sampled through realizations of X having copula function C: had the marginals of Y been known, sampling Xi, the i-th component of X, would directly follow by composing Yi with its cumulative distribution function (c.d.f.) and the inverse c.d.f. of Xi. In this work, the marginals of Y are not explicit, as in a factor copula model. We design an algorithm which samples X through an empirical approximation of the c.d.f. of the Y-marginals. To be able to handle complex distributions for Y or rare-event computations, we allow Markov Chain Monte Carlo (MCMC) samplers. We establish convergence results whose rates depend on the tails of X, Y and the Lyapunov function of the MCMC sampler. We present numerical experiments confirming the convergence rates and also revisit a real data analysis from financial risk management.},
+ author = {Benezet, Cyril and Gobet, Emmanuel and Targino, Rodrigo S.},
+ journal = {Methodology and Computing in Applied Probability},
+ title = {Transform MCMC schemes for sampling intractable factor copula models},
+ url = {https://doi.org/10.1007/s11009-023-09983-4},
+ volume = {23},
+ year = {2023}
+}
+
+@article{dacosta2022risk,
+ abstract = {Risk budgeting is a portfolio strategy where each asset contributes a prespecified amount to the aggregate risk of the portfolio. In this work, we propose a numerical framework that uses only simulations of returns for estimating risk budgeting portfolios. Specifically, we provide a Sample Average Approximation (SAA) algorithm with cutting planes, and a Stochastic Gradient Decent (SGD) algorithm, tailored to the risk budgeting portfolio for the Expected Shortfall. We illustrate different risk budgeting portfolios, constructed using a especially designed Julia package, on real financial data and compare it to classical portfolio strategies.},
+ author = {da Costa, Bernardo Freitas Paulo and Pesenti, Silvana and Targino, Rodrigo S.},
+ doi = {https://doi.org/10.1016/j.ejor.2023.06.003},
+ journal = {European Journal of Operational Research},
+ title = {Risk Budgeting Portfolios from Simulations},
+ year = {2023}
+}
+
+@article{saporito2022avoiding,
+ abstract = {This paper is concerned with the process of risk allocation for a generic multivariate model when the risk measure is chosen as the Value-at-Risk (VaR). Making use of Malliavin calculus, we recast the traditional Euler contributions from an expectation conditional to an event of zero probability to a ratio of conditional expectations, where both the numerator and the denominator's conditioning events have positive probability. For several different models we show empirically that the estimator using this novel representation has no perceivable bias and variance smaller than a standard estimator used in practice.},
+ author = {Koike, Takaaki and Saporito, Yuri F and Targino, Rodrigo S},
+ doi = {https://doi.org/10.1016/j.insmatheco.2022.06.004},
+ journal = {Insurance: Mathematics and Economics},
+ pages = {173--192},
+ publisher = {Elsevier},
+ title = {Avoiding zero probability events when computing Value at Risk contributions},
+ volume = {106},
+ year = {2022}
+}
+
+@unpublished{stochastic2023maia,
+title = {Stochastic modelling of football matches},
+author = {Maia, Luiz Fernando G. N. and Pennanen, Teemu and da Silva,  Moacyr A. H. B. and Targino, Rodrigo S.},
+year = {2023},
+url = {https://arxiv.org/abs/2312.04338 },
+abstract = {This paper develops a general framework for stochastic modeling of goals and other events in football (soccer) matches. The events are modelled as Cox processes (doubly stochastic Poisson processes) where the event intensities may depend on all the modeled events as well as external factors. The model has a strictly concave log-likelihood function which facilitates its fitting to observed data. Besides event times, the model describes the random lengths of stoppage times which can have a strong influence on the final score of a match. The model is illustrated on eight years of data from Campeonato Brasileiro de Futebol Série A. We find that dynamic regressors significantly improve the in-game predictive power of the model. In particular, a) when a team receives a red card, its goal intensity decreases more than 30\%; b) the goal rate of a team increases by 10\% if it is losing by one goal and by 20\% if its losing by two goals; and c) when the goal difference at the end of the second half is less than or equal to one, the stoppage time is on average more than one minute longer than in matches with a difference of two goals.} 
+}
+
+@unpublished{graziadei2023conformal,
+ abstract = {We present a nonparametric model-agnostic framework for building prediction intervals of insurance claims, with finite sample statistical guarantees, extending the technique of split conformal prediction to the domain of two-stage frequency-severity modeling. The effectiveness of the framework is showcased with simulated and real datasets. When the underlying severity model is a random forest, we extend the two-stage split conformal prediction procedure, showing how the out-of-bag mechanism can be leveraged to eliminate the need for a calibration set and to enable the production of prediction intervals with adaptive width.},
+ author = {Graziadei, Helton and Marques F., Paulo C. and de Melo, Eduardo F. L. and Targino, Rodrigo S.},
+ title = {Conformal prediction for frequency-severity modeling},
+ url = {https://arxiv.org/pdf/2307.13124},
+ year = {2023}
+}

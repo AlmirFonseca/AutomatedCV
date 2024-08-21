@@ -1,0 +1,36 @@
+[
+    {
+        "year": "2023",
+        "volume": "23",
+        "url": "https://doi.org/10.1007/s11009-023-09983-4",
+        "title": "Transform MCMC schemes for sampling intractable factor copula models",
+        "journal": "Methodology and Computing in Applied Probability",
+        "author": "Benezet, Cyril and Gobet, Emmanuel and Targino, Rodrigo S.",
+        "abstract": "In financial risk management, modelling dependency within a random vector X is crucial, a standard approach is the use of a copula model. Say the copula model can be sampled through realizations of X having copula function C: had the marginals of Y been known, sampling Xi, the i-th component of X, would directly follow by composing Yi with its cumulative distribution function (c.d.f.) and the inverse c.d.f. of Xi. In this work, the marginals of Y are not explicit, as in a factor copula model. We design an algorithm which samples X through an empirical approximation of the c.d.f. of the Y-marginals. To be able to handle complex distributions for Y or rare-event computations, we allow Markov Chain Monte Carlo (MCMC) samplers. We establish convergence results whose rates depend on the tails of X, Y and the Lyapunov function of the MCMC sampler. We present numerical experiments confirming the convergence rates and also revisit a real data analysis from financial risk management.",
+        "ENTRYTYPE": "article",
+        "ID": "benezet2021transform"
+    },
+    {
+        "year": "2023",
+        "title": "Risk Budgeting Portfolios from Simulations",
+        "journal": "European Journal of Operational Research",
+        "doi": "https://doi.org/10.1016/j.ejor.2023.06.003",
+        "author": "da Costa, Bernardo Freitas Paulo and Pesenti, Silvana and Targino, Rodrigo S.",
+        "abstract": "Risk budgeting is a portfolio strategy where each asset contributes a prespecified amount to the aggregate risk of the portfolio. In this work, we propose a numerical framework that uses only simulations of returns for estimating risk budgeting portfolios. Specifically, we provide a Sample Average Approximation (SAA) algorithm with cutting planes, and a Stochastic Gradient Decent (SGD) algorithm, tailored to the risk budgeting portfolio for the Expected Shortfall. We illustrate different risk budgeting portfolios, constructed using a especially designed Julia package, on real financial data and compare it to classical portfolio strategies.",
+        "ENTRYTYPE": "article",
+        "ID": "dacosta2022risk"
+    },
+    {
+        "year": "2022",
+        "volume": "106",
+        "title": "Avoiding zero probability events when computing Value at Risk contributions",
+        "publisher": "Elsevier",
+        "pages": "173--192",
+        "journal": "Insurance: Mathematics and Economics",
+        "doi": "https://doi.org/10.1016/j.insmatheco.2022.06.004",
+        "author": "Koike, Takaaki and Saporito, Yuri F and Targino, Rodrigo S",
+        "abstract": "This paper is concerned with the process of risk allocation for a generic multivariate model when the risk measure is chosen as the Value-at-Risk (VaR). Making use of Malliavin calculus, we recast the traditional Euler contributions from an expectation conditional to an event of zero probability to a ratio of conditional expectations, where both the numerator and the denominator's conditioning events have positive probability. For several different models we show empirically that the estimator using this novel representation has no perceivable bias and variance smaller than a standard estimator used in practice.",
+        "ENTRYTYPE": "article",
+        "ID": "saporito2022avoiding"
+    }
+]
