@@ -88,11 +88,11 @@ function appendArticleCard(article, container, articleType) {
 
     // Select the appropriate card template based on the article type
     switch (articleType) {
-        case 'publications':
-            articleCard.innerHTML = generatePublicationHtml(article);
-            break;
         case 'talks':
             articleCard.innerHTML = generateTalkHtml(article);
+            break;
+        default:
+            articleCard.innerHTML = generatePublicationHtml(article);
             break;
     }
 

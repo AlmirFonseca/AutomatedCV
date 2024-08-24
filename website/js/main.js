@@ -41,9 +41,9 @@ function initializePageContent() {
     renderCsvAsTable("../static/author_data/students.csv", 'alumni-table');
 
     // Display articles (talks, publications, preprints) in the respective sections
-    displayArticles(talksData, 'talks-container', 'talks', 5);
-    displayArticles(publicationsData, 'publications-container', 'publications', 5);
-    displayArticles(preprintsData, 'preprints-container', 'publications', 5);
+    displayArticles(talksData, 'talks-container', 'talks', 3);
+    displayArticles(publicationsData, 'publications-container', 'publications', 3);
+    displayArticles(preprintsData, 'preprints-container', 'publications', 3);
 }
 
 // Wait for the document to fully load before executing the initialization
