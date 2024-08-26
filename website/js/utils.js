@@ -1,11 +1,34 @@
 /**
- * Converts a CSV string into a table format and appends it to the specified HTML table element.
+ * Fetches and processes CSV data, then populates the specified list or table.
+ * @param {string} csvPath - The path to the CSV file.
+ * @param {string} containerId - The ID of the container to populate.
+ * @param {Function} populateFunction - The function to populate the data.
+ */
+export async function renderCsv(csvPath, containerId, populateFunction) {
+    try {
+        const response = await fetch(csvPath);
+        if (!response.ok) throw new Error(`Failed to fetch CSV: ${response.statusText}`);
+
+        const csvData = await response.text();
+        populateFunction(csvData, containerId);
+    } catch (error) {
+        console.error(`Error loading CSV from ${csvPath}:`, error);
+    }
+}
+
+/**
+ * Populates an HTML table with the data from the CSV file.
  * @param {string} csvText - The CSV data as a string.
  * @param {string} tableId - The ID of the HTML table element to display the data.
  */
-function convertCsvToTable(csvText, tableId) {
+export function populateTable(csvText, tableId) {
     const rows = csvText.split('\n');
     const tableElement = document.getElementById(tableId);
+
+    if (!tableElement) {
+        console.error(`Element with id '${tableId}' not found.`);
+        return;
+    }
 
     // Clear the table content before populating it with new data
     tableElement.innerHTML = '';
@@ -15,38 +38,126 @@ function convertCsvToTable(csvText, tableId) {
         const newRow = tableElement.insertRow(-1); // Insert a new row at the end of the table
         let cells = [];
 
-        // If the row starts with a quotation mark, split by the quotation and comma
-        if (row.startsWith('"') || row.startsWith("'")) {
-            const quoteChar = row[0];
-            cells = row.split(`${quoteChar},`).map(cell => cell.replace(quoteChar, ''));
-        } else {
-            cells = row.split(',');
-        }
+        // Split the row by commas
+        cells = row.split(',');
 
         // Add each cell to the row (th for headers, td for data cells)
         cells.forEach(cellText => {
-            const cellElement = rowIndex === 0 ? document.createElement('th') : document.createElement('td');
-            cellElement.textContent = cellText.replace(/,/g, ''); // Remove stray commas
+            const cellElement = document.createElement(rowIndex === 0 ? 'th' : 'td');
+            cellElement.textContent = cellText.trim();
             newRow.appendChild(cellElement);
         });
     });
 }
 
 /**
- * Fetches a CSV file from a given path and renders its content as a table.
- * @param {string} csvPath - The path to the CSV file.
- * @param {string} tableId - The ID of the HTML table element where the data will be displayed.
+ * Populates an education section with the data from the CSV file.
+ * @param {string} csvText - The CSV data as a string.
+ * @param {string} divId - The ID of the div to populate.
  */
-export function renderCsvAsTable(csvPath, tableId) {
-    fetch(csvPath)
-        .then(response => response.text())
-        .then(csvData => {
-            console.log(csvData);
-            convertCsvToTable(csvData, tableId);
-        })
-        .catch(error => console.error('Error loading CSV file:', error));
+export function populateEducation(csvText, divId) {
+    const lines = csvText.split('\n').slice(1).filter(line => line.trim() !== '');
+    const divElement = document.getElementById(divId);
+    if (!divElement) {
+        console.error(`Element with id '${divId}' not found.`);
+        return;
+    }
+
+    divElement.innerHTML = ''; // Clear previous content
+
+    lines.forEach(line => {
+        const [course, institution, year] = line.split(',');
+
+        if (course && institution && year) {
+            divElement.appendChild(createEducationEntry(course, institution, year));
+        }
+    });
 }
 
+/**
+ * Creates a div for a single education entry.
+ * @param {string} course - The course name.
+ * @param {string} institution - The institution name.
+ * @param {string} year - The year of completion.
+ * @returns {HTMLElement} - A div element containing the education entry.
+ */
+function createEducationEntry(course, institution, year) {
+    const entryDiv = document.createElement('div');
+    entryDiv.innerHTML = `
+        <p style="font-weight: bold;">${course}, ${year}</p>
+        <p>${institution}</p>
+    `;
+    return entryDiv;
+}
+
+
+/**
+ * Populates an experience list with data from a CSV file.
+ * @param {string} csvText - The CSV data as a string.
+ * @param {string} listId - The ID of the list element to populate.
+ */
+export function populateExperience(csvText, listId) {
+    const lines = csvText.split('\n').slice(1).filter(line => line.trim() !== '');
+    const listElement = document.getElementById(listId);
+
+    if (!listElement) {
+        console.error(`Element with id '${listId}' not found.`);
+        return;
+    }
+
+    // Sort the data by date in descending order
+    const sortedLines = lines.sort((a, b) => new Date(b.split('","')[4]) - new Date(a.split('","')[4]));
+
+    listElement.innerHTML = ''; // Clear previous content
+
+    sortedLines.forEach(line => {
+        const [title, company, companyURL, location, startDate, endDate] = parseCsvRow(line);
+        listElement.appendChild(createExperienceItem(title, company, companyURL, location, startDate, endDate));
+    });
+}
+
+/**
+ * Parses a CSV row taking into account potential quotes and commas within fields.
+ * @param {string} row - The CSV row as a string.
+ * @returns {string[]} - An array of cell values.
+ */
+function parseCsvRow(row) {
+    const regex = /(".*?"|[^",]+)(?=\s*,|\s*$)/g;
+    return row.match(regex).map(cell => cell.replace(/(^"|"$)/g, ''));
+}
+
+/**
+ * Creates an HTML list item for a single experience entry.
+ * @param {string} title - The job title.
+ * @param {string} company - The company name.
+ * @param {string} companyURL - The URL of the company.
+ * @param {string} location - The location of the job.
+ * @param {string} startDate - The start date of the job.
+ * @param {string} endDate - The end date of the job (optional).
+ * @returns {HTMLElement} - An HTML list item representing the experience entry.
+ */
+function createExperienceItem(title, company, companyURL, location, startDate, endDate) {
+    const listItem = document.createElement('li');
+
+    const dateFormatted = `${formatDate(startDate)} – ${endDate.trim() ? formatDate(endDate) : 'Present'}`;
+    listItem.innerHTML = `
+        <p style="font-weight: bold;">${title}</p>
+        <p><a href="${companyURL}" target="_blank">${company}</a></p>
+        <p>${dateFormatted} 🔹 ${location}</p>
+    `;
+
+    return listItem;
+}
+
+/**
+ * Formats a date string into a human-readable format (e.g., Sep 2022).
+ * @param {string} dateStr - The date string (e.g., "2022-09-01").
+ * @returns {string} - The formatted date.
+ */
+function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+}
 
 /**
  * Generates a string of HTML representing a publication.
