@@ -4,6 +4,7 @@
     --dark-blue: rgb(35, 37, 47);
     --hyperlink-blue: rgb(41, 98, 255);
     --light-gray: rgb(152, 166, 173);
+    --modal-overlay: rgba(0, 0, 0, 0.7);
 }
 
 /* General */
@@ -52,6 +53,64 @@ nav a {
 
 .bold {
     font-weight: 700;
+}
+
+/* Article-card title */
+.article-card h3 {
+    cursor: pointer;
+    color: var(--light-gray);   
+}
+
+.article-card h3:hover {
+    color: var(--hyperlink-blue);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--modal-overlay);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    margin: auto;
+    padding: 20px;
+    border: 2px solid var(--light-gray);
+    border-radius: 10px;
+    width: 60%;
+    max-width: 800px;
+    color: var(--light-gray);
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 4px 8px 0px;
+}
+
+.close {
+    color: var(--light-gray);
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--hyperlink-blue);
+    text-decoration: none;
+}
+
+.modal a {
+    color: var(--hyperlink-blue);
+    text-decoration: underline;
+}
+
+.modal a:hover {
+    color: var(--hyperlink-blue);
 }
 
 /* ID's */

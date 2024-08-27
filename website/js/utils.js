@@ -162,29 +162,71 @@ function formatDate(dateStr) {
 /**
  * Generates a string of HTML representing a publication.
  * @param {object} publication - The publication object containing its details.
+ * @param {HTMLElement} publicationCard - The publication card element to append the HTML to
  * @returns {string} - The HTML string representing the publication card.
  */
-function generatePublicationHtml(publication) {
-    return `
-        <h3><a href="article.html?id=${publication.ID}&type=${publication.ENTRYTYPE}">${publication.title}</a></h3>
-        <p><strong>Authors:</strong> ${publication.author}</p>
-        <p><strong>Published in:</strong> ${publication.journal}, Volume ${publication.volume}, ${publication.year}</p>
+function generatePublicationHtml(publication, publicationCard) {
+    // Create a title element with an onclick event to open the modal in the publication card
+    const titleElement = document.createElement('h3');
+
+    titleElement.textContent = publication.title;
+
+    titleElement.onclick = function() {
+        showArticleDetails(publication);
+    };
+
+    // Create a paragraph element with the publication details
+    const publicationDetails = document.createElement('p');
+    const publicationVolume = publication.volume ? `Volume ${publication.volume}` : '';
+
+    var publishedInfo = "";
+    publishedInfo = [publication.journal, publicationVolume, publication.year].filter(Boolean).join(', ');
+
+    publicationDetails.innerHTML = `
+        <strong>Authors:</strong> ${publication.author}<br>
+        <strong>Published in:</strong> ${publishedInfo}
     `;
+
+    // Append the title and details to the publication card
+    publicationCard.appendChild(titleElement);
+    publicationCard.appendChild(publicationDetails);
+
+    return publicationCard;
 }
 
 /**
  * Generates a string of HTML representing a talk.
  * @param {object} talk - The talk object containing its details.
+ * @param {HTMLElement} talkCard - The talk card element to append the HTML to
  * @returns {string} - The HTML string representing the talk card.
  */
-function generateTalkHtml(talk) {
-    const talkAbstract = talk.abstract ? talk.abstract.substring(0, 200) + '...' : ''; // Truncate abstract if too long
-    return `
-        <h3>${talk.title}</h3>
+function generateTalkHtml(talk, talkCard) {
+    // Create a title element with an onclick event to open the modal in the talk card
+    const titleElement = document.createElement('h3');
+    
+    titleElement.textContent = talk.title;
+
+    titleElement.onclick = function() {
+        showArticleDetails(talk);
+    }
+
+    // Create a paragraph element with the talk details
+    const talkDetails = document.createElement('p');
+
+    // Truncate abstract if too long
+    const talkAbstract = talk.abstract ? talk.abstract.substring(0, 200) + '...' : ''; 
+
+    talkDetails.innerHTML = `
         <p>${talkAbstract}</p>
         <p>${talk.year} - ${talk.journal}</p>
         <a href="${talk.url}" target="_blank">PDF</a> | CITE
     `;
+
+    // Append the title and details to the talk card
+    talkCard.appendChild(titleElement);
+    talkCard.appendChild(talkDetails);
+
+    return talkCard;
 }
 
 /**
@@ -194,21 +236,59 @@ function generateTalkHtml(talk) {
  * @param {string} articleType - The type of the article ('publications' or 'talks').
  */
 function appendArticleCard(article, container, articleType) {
-    const articleCard = document.createElement('div');
+    let articleCard = document.createElement('div');
     articleCard.classList.add('article-card');
 
     // Select the appropriate card template based on the article type
     switch (articleType) {
         case 'talks':
-            articleCard.innerHTML = generateTalkHtml(article);
+            articleCard = generateTalkHtml(article, articleCard);
             break;
         default:
-            articleCard.innerHTML = generatePublicationHtml(article);
+            articleCard = generatePublicationHtml(article, articleCard);
             break;
     }
 
     container.appendChild(articleCard);
 }
+
+/**
+ * Opens a modal window with the details of an article.
+ * @param {object} content - The content to display in the modal window.
+ */
+function openModal(content) {
+    const modal = document.getElementById('articleModal');
+    const modalContent = document.getElementById('modalContent');
+
+    // Set the content and display the modal 
+    modalContent.innerHTML = content;
+    modal.style.display = 'block';
+
+    // Close the modal if the user clicks outside of it
+    window.onclick = function(event) {
+        modal.style.display = event.target === modal ? 'none' : modal.style.display;
+    };
+    
+    // Close the modal if the user clicks the close button
+    const closeBtn = document.querySelector('.close');
+    closeBtn.onclick = function() {
+        modal.style.display = 'none';
+    };
+}
+
+
+function showArticleDetails(article) {
+    const content = `
+      <h1>${article.title}</h1>
+      <p><strong>(${article.year})</strong> ${article.author}</p>
+      <h3>Abstract</h3>
+      <p>${article.abstract || 'No abstract available.'}</p>
+      <p>${article.journal ? `${article.journal}, Volume ${article.volume}` : ''}</p>
+      <p><a href="${article.doi || article.url}" target="_blank">${article.doi ? 'DOI' : 'PDF'}</a></p>
+    `;
+    openModal(content);
+}
+
 
 /**
  * Displays a list of articles (e.g., publications or talks) within a specified container.
