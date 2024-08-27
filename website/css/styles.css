@@ -65,6 +65,12 @@ nav a {
     color: var(--hyperlink-blue);
 }
 
+.article-card a {
+    color: var(--hyperlink-blue);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 /* Modal Styles */
 .modal {
     display: none;

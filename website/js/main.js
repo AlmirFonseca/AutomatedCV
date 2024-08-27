@@ -42,7 +42,7 @@ function initializePageContent() {
     // Display articles (talks, publications, preprints) in the respective sections
     displayArticles(talksData, 'talks-list', 'talks', 3);
     displayArticles(publicationsData, 'publications-list', 'publications', 3);
-    displayArticles(preprintsData, 'preprints-list', 'publications', 3);
+    displayArticles(preprintsData, 'preprints-list', 'preprints', 3);
 }
 
 // Wait for the document to fully load before executing the initialization
