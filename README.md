@@ -54,7 +54,7 @@ AutomatedCV/
 │   ├── run.py # Script principal de automação
 │   └── setup.sh # Script de instalação das dependências
 │
-├── website/ # Código fonte do website (HTML, CSS, JS)
+├── docs/ # Código fonte do website (HTML, CSS, JS)
 │   ├── css/ # Estilos do website
 │   ├── js/ # Scripts do website
 │   ├── img/ # Imagens do website
@@ -62,8 +62,6 @@ AutomatedCV/
 │   └── index.html # Página inicial do website
 │
 ├── .gitignore # Arquivos e pastas a serem ignorados pelo Git
-│
-├── _config.yml # Configurações do Jekyll (Gerador de sites estáticos do GitHub Pages)
 │
 ├── LICENSE # Licença do projeto (Padrão Apache 2.0)
 │
