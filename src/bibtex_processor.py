@@ -40,7 +40,7 @@ def save_bibtex_as_json(bibtex_entries, json_path):
     entries_dict = dict(sorted(entries_dict.items(), key=lambda x: x[1].get('year', '9999'), reverse=True))
 
     # Save the dictionary as a JSON file
-    with open(json_path, 'w') as json_file:
+    with open(json_path, 'w', encoding='utf-8') as json_file:
         json.dump(entries_dict, json_file, indent=4)
         print(f"Entries saved to {json_file.name}")
 
