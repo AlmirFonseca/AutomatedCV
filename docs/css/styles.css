@@ -113,10 +113,12 @@ nav a {
 .modal a {
     color: var(--hyperlink-blue);
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .modal a:hover {
     color: var(--hyperlink-blue);
+    text-decoration: none;
 }
 
 /* ID's */

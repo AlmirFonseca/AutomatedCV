@@ -173,7 +173,7 @@ function generatePublicationHtml(publication, publicationCard, publicationType) 
     titleElement.textContent = publication.title;
 
     titleElement.onclick = function() {
-        showArticleDetails(publication);
+        showArticleDetails(publication, publicationType);
     };
 
     // Create a paragraph element with the publication details
@@ -217,7 +217,7 @@ function generateTalkHtml(talk, talkCard) {
     titleElement.textContent = talk.title;
 
     titleElement.onclick = function() {
-        showArticleDetails(talk);
+        showArticleDetails(talk, "talks");
     }
 
     // Create a paragraph element with the talk details
@@ -271,33 +271,45 @@ function appendArticleCard(article, container, articleType) {
 
 /**
  * Opens a modal window with the details of an article.
+ * @param {object} article - The article object containing its details.
+ * @param {string} articleType - The type of the article.
  * @param {object} content - The content to display in the modal window.
  */
-function openDetailModal(content) {
+function openDetailModal(article, articleType, content) {
     const modal = document.getElementById('articleModal');
     const modalContent = document.getElementById('modalContent');
-
-    // Set the content and display the modal 
-    modalContent.innerHTML = content;
-    modal.style.display = 'block';
 
     // Close the modal if the user clicks outside of it
     window.onclick = function(event) {
         modal.style.display = event.target === modal ? 'none' : modal.style.display;
     };
+
+    // If no content is provided, break out of the function
+    if (!content) return;
+
+    // Set the content and display the modal 
+    modalContent.innerHTML = content;
+    modal.style.display = 'block';
     
     // Close the modal if the user clicks the close button
     const closeBtn = document.querySelector('#closeModal');
     closeBtn.onclick = function() {
         modal.style.display = 'none';
     };
+
+    const citeLink = modalContent.querySelector('.cite-link');
+    citeLink.onclick = function(event) {
+        event.stopPropagation();
+        showArticleCite(article, articleType);
+    };
 }
 
 /**
  * Displays the details of an article in a modal window.
  * @param {object} article - The article object containing its details.
+ * @param {string} articleType - The type of the article.
  */
-function showArticleDetails(article) {
+function showArticleDetails(article, articleType) {
     const content = `
       <h1>${article.title}</h1>
       <p><strong>(${article.year})</strong> ${article.author}</p>
@@ -305,8 +317,9 @@ function showArticleDetails(article) {
       <p>${article.abstract || 'No abstract available.'}</p>
       <p>${article.journal ? `${article.journal}, Volume ${article.volume}` : ''}</p>
       <p><a href="${article.doi || article.url}" target="_blank">${article.doi ? 'DOI' : 'PDF'}</a></p>
+      <a class="cite-link">CITE</a>
     `;
-    openDetailModal(content);
+    openDetailModal(article, articleType, content);
 }
 
 /**
@@ -322,6 +335,11 @@ function openCiteModal(content) {
 
     window.onclick = function(event) {
         modal.style.display = event.target === modal ? 'none' : modal.style.display;
+        
+        // If a detail modal is open, listen for clicks to close it
+        if (document.getElementById('articleModal').style.display === 'block') {
+            openDetailModal();
+        }
     };
 
     const closeBtn = document.querySelector('#closeCiteModal');
