@@ -97,6 +97,12 @@ nav a {
     box-shadow: rgba(255, 255, 255, 0.1) 0px 4px 8px 0px;
 }
 
+pre {
+    white-space: pre-wrap; /* Wraps long lines */
+    word-wrap: break-word; /* Breaks long words */
+    max-width: 100%; /* Ensure it doesn’t exceed its container */
+}
+
 .close {
     color: var(--light-gray);
     float: right;
