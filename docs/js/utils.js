@@ -66,7 +66,7 @@ export function populateEducation(csvText, divId) {
     divElement.innerHTML = ''; // Clear previous content
 
     lines.forEach(line => {
-        const [course, institution, year] = line.split(',');
+        const [course, institution, startYear, year, location] = line.split(',');
 
         if (course && institution && year) {
             divElement.appendChild(createEducationEntry(course, institution, year));
@@ -106,7 +106,7 @@ export function populateExperience(csvText, listId) {
     }
 
     // Sort the data by date in descending order
-    const sortedLines = lines.sort((a, b) => new Date(b.split('","')[4]) - new Date(a.split('","')[4]));
+    const sortedLines = lines.sort((a, b) => new Date(b.split('","')[4].split(",")[0]) - new Date(a.split('","')[4].split(",")[0]));
 
     listElement.innerHTML = ''; // Clear previous content
 
@@ -139,7 +139,8 @@ function parseCsvRow(row) {
 function createExperienceItem(title, company, companyURL, location, startDate, endDate) {
     const listItem = document.createElement('li');
 
-    const dateFormatted = `${formatDate(startDate)} – ${endDate.trim() ? formatDate(endDate) : 'Present'}`;
+    //  If endDate is not provided or is a invalid date, consider the job as current
+    const dateFormatted = `${formatDate(startDate)} – ${formatDate(endDate) !== 'Invalid Date' ? formatDate(endDate) : '<strong>Present</strong>'}`;
     listItem.innerHTML = `
         <p style="font-weight: bold;">${title}</p>
         <p><a href="${companyURL}" target="_blank">${company}</a></p>
@@ -376,8 +377,6 @@ function showArticleCite(article, articleType) {
  * @param {number} [limit=Infinity] - The maximum number of articles to display (default is unlimited).
  */
 export function displayArticles(articlesData, containerId, articleType, limit = Infinity) {
-    console.log(articlesData);
-
     const containerElement = document.getElementById(containerId);
     
     // Clear any existing content in the container

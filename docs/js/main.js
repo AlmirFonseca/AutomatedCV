@@ -38,6 +38,7 @@ function initializePageContent() {
     renderCsv("../static/author_data/education.csv", 'education-list', populateEducation);
     renderCsv("../static/author_data/professional_experience.csv", 'professional-experience-list', populateExperience);
     renderCsv("../static/author_data/students.csv", 'students-table', populateTable);
+    renderCsv("../static/author_data/teaching_experience.csv", 'teaching-table', populateTable);
 
     // Display articles (talks, publications, preprints) in the respective sections
     displayArticles(talksData, 'talks-list', 'talks', 3);
