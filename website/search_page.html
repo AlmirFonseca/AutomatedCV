@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Articles</title>
-    <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="../static/images/favicon.png" sizes="16x16" type="image/png">
     <script type="module" src="js/search_page.js"></script>
 
@@ -12,17 +11,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" 
           integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" 
           crossorigin="anonymous">
+
+          
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="js/search_page.js"></script>
 </head>
 <body>
     <header>
-        <!-- Navigation Bar with Anchors to other pages -->
+        <!-- Navigation Bar with Anchors to Sections -->
         <nav>
-            <p class="bold">Rodrigo S. Targino</p>
+            <a href="..\index.html" class="bold nav-permanent">Rodrigo S. Targino</a>
 
+            <a href="..\index.html#professional-experience-section">Experience</a>
+            <a href="..\index.html#personal-info-section">Home</a>
+            <a href="..\index.html#talks-section">Talks</a>
+            <a href="..\index.html#publications-section">Publications</a>
+            <a href="..\index.html#preprints-section">Preprints</a>
+            <a href="..\index.html#students-section">Students</a>
+            <a href="..\index.html#teaching-section">Teaching</a>
+            <a href="..\index.html#contact-section">Contact</a>
             <a href="..\static\author_data\RodrigoSTarginoCV.pdf">CV</a>
 
-            <a id="search-button" href=".\index.html">
-                <i class="fas fa-home"></i>
+            <a id="search-button" href=".\search_page.html">
+                <i class="fas fa-search"></i>
+            </a>
+
+            <!-- Ícone do Menu Hamburguer -->
+            <a id="menu-toggle" href="javascript:void(0);">
+                <i class="fas fa-bars"></i> <!-- Ícone do menu hamburguer -->
             </a>
         </nav>
     </header>

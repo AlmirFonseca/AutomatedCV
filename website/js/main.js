@@ -11,11 +11,11 @@ import { populateTable, populateEducation, populateExperience, renderCsv, displa
  * @param {Object} personalData - The object containing personal data of the author.
  */
 function populatePersonalInformation(personalData) {
-    console.log(personalData);
 
     // Populate the name, title, and biography sections
     document.getElementById('name').innerHTML = personalData.name;
     document.getElementById('title').innerHTML = personalData.title;
+    document.getElementById('affiliation').innerHTML = personalData.affiliation.institution;
 
     let biographyParagraphs = personalData.biography.split(/\n/);
     let biography = biographyParagraphs.map(paragraph => `<p class='biography-text'>${paragraph}</p>`).join('');
@@ -28,6 +28,44 @@ function populatePersonalInformation(personalData) {
         interestListItem.innerHTML = interest;
         interestsListElement.appendChild(interestListItem);
     });
+}
+
+/**
+ * Populates the contact information section in the HTML with the data from the JSON.
+ * @param {Object} contactData - The object containing contact information of the author.
+ */
+function populateContactInformation(contactData) {
+    // Select the container elements for the contact section
+    const contactEmailElement = document.getElementById('contact-email');
+    const contactAddressElement = document.getElementById('contact-address');
+    const contactMapElement = document.getElementById('contact-map');
+
+    // Email section with an envelope icon
+    const emailAnchor = document.createElement('a');
+    emailAnchor.href = `mailto:${contactData.email}`;
+    emailAnchor.innerHTML = `<i class="fas fa-envelope"></i> ${contactData.email}`; // Font Awesome icon
+    contactEmailElement.appendChild(emailAnchor);
+
+    // Address section with a map marker icon
+    const addressDiv = document.createElement('div');
+    addressDiv.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${contactData.address}`; // Font Awesome marker icon
+    contactAddressElement.appendChild(addressDiv);
+
+    // Leaflet Map section
+    const latitude = contactData.geoposition.latitude;
+    const longitude = contactData.geoposition.longitude;
+
+    // Create a map using Leaflet
+    const map = L.map(contactMapElement).setView([latitude, longitude], 15);
+
+    // Add OpenStreetMap tile layer (free to use, no API key required)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    // Add a marker for the given location
+    L.marker([latitude, longitude]).addTo(map)
+        .bindPopup(`<b>${contactData.address}</b>`);
 }
 
 /**
@@ -47,6 +85,9 @@ function initializePageContent() {
     displayArticles(talksData, 'talks-list', 'talks', 3);
     displayArticles(publicationsData, 'publications-list', 'publications', 3);
     displayArticles(preprintsData, 'preprints-list', 'preprints', 3);
+
+    // Populate contact information
+    populateContactInformation(personalData.contact_information);
 }
 
 // Wait for the document to fully load before executing the initialization

@@ -50,29 +50,73 @@ export function populateTable(csvText, tableId) {
     });
 }
 
+// /**
+//  * Populates an education section with the data from the CSV file.
+//  * @param {string} csvText - The CSV data as a string.
+//  * @param {string} divId - The ID of the div to populate.
+//  */
+// export function populateEducation(csvText, divId) {
+//     const lines = csvText.split('\n').slice(1).filter(line => line.trim() !== '');
+//     const divElement = document.getElementById(divId);
+//     if (!divElement) {
+//         console.error(`Element with id '${divId}' not found.`);
+//         return;
+//     }
+
+//     divElement.innerHTML = ''; // Clear previous content
+
+//     lines.forEach(line => {
+//         const [course, institution, startYear, year, location] = line.split(',');
+
+//         if (course && institution && year) {
+//             divElement.appendChild(createEducationEntry(course, institution, year));
+//         }
+//     });
+// }
+
 /**
  * Populates an education section with the data from the CSV file.
  * @param {string} csvText - The CSV data as a string.
- * @param {string} divId - The ID of the div to populate.
+ * @param {string} ulId - The ID of the UL to populate.
  */
-export function populateEducation(csvText, divId) {
-    const lines = csvText.split('\n').slice(1).filter(line => line.trim() !== '');
-    const divElement = document.getElementById(divId);
-    if (!divElement) {
-        console.error(`Element with id '${divId}' not found.`);
+export function populateEducation(csvText, ulId) {
+    const lines = csvText.split('\n').slice(1).filter(line => line.trim() !== ''); // Ignora a primeira linha (cabeçalho) e linhas vazias
+    const ulElement = document.getElementById(ulId);
+    
+    if (!ulElement) {
+        console.error(`Element with id '${ulId}' not found.`);
         return;
     }
 
-    divElement.innerHTML = ''; // Clear previous content
+    ulElement.innerHTML = ''; // Limpa o conteúdo anterior da lista
 
     lines.forEach(line => {
-        const [course, institution, startYear, year, location] = line.split(',');
+        const [course, institution, startYear, year] = line.split(',').map(item => item.trim()); // Remove espaços em branco
 
-        if (course && institution && year) {
-            divElement.appendChild(createEducationEntry(course, institution, year));
+        if (course && institution && startYear && year) {
+            const liElement = document.createElement('li'); // Cria um novo elemento <li>
+            liElement.classList.add('education-item'); // Adiciona a classe 'collection-item' ao elemento
+
+            // Cria o primeiro parágrafo para curso e ano
+            const firstLine = document.createElement('p');
+            firstLine.textContent = `${course}, ${startYear} - ${year}`;
+
+            // Cria o segundo parágrafo para instituição
+            const secondLine = document.createElement('p');
+            secondLine.classList.add('grey-text');
+            secondLine.classList.add('education-institution');
+            secondLine.textContent = institution;
+
+            // Adiciona os parágrafos dentro do li
+            liElement.appendChild(firstLine);
+            liElement.appendChild(secondLine);
+
+            // Adiciona o li à ul
+            ulElement.appendChild(liElement);
         }
     });
 }
+
 
 /**
  * Creates a div for a single education entry.
@@ -140,11 +184,17 @@ function createExperienceItem(title, company, companyURL, location, startDate, e
     const listItem = document.createElement('li');
 
     //  If endDate is not provided or is a invalid date, consider the job as current
-    const dateFormatted = `${formatDate(startDate)} – ${formatDate(endDate) !== 'Invalid Date' ? formatDate(endDate) : '<strong>Present</strong>'}`;
+    const dateFormatted = `${formatDate(startDate)} – ${formatDate(endDate) !== 'Invalid Date' ? formatDate(endDate) : 'Present'}`;
+
+    // Add the class 'filled' if dateFormatted ends with 'Present'
+    if (dateFormatted.endsWith('Present')) {
+        listItem.classList.add('filled');
+    }
+
     listItem.innerHTML = `
         <p style="font-weight: bold;">${title}</p>
         <p><a href="${companyURL}" target="_blank">${company}</a></p>
-        <p>${dateFormatted} 🔹 ${location}</p>
+        <p class="grey-text">${dateFormatted} • ${location}</p>
     `;
 
     return listItem;
@@ -170,6 +220,7 @@ function formatDate(dateStr) {
 function generatePublicationHtml(publication, publicationCard, publicationType) {
     // Create a title element with an onclick event to open the modal in the publication card
     const titleElement = document.createElement('h3');
+    titleElement.classList.add('publication-title');
 
     titleElement.textContent = publication.title;
 
@@ -182,11 +233,11 @@ function generatePublicationHtml(publication, publicationCard, publicationType) 
     const publicationVolume = publication.volume ? `Volume ${publication.volume}` : '';
 
     var publishedInfo = "";
-    publishedInfo = [publication.journal, publicationVolume, publication.year].filter(Boolean).join(', ');
+    publishedInfo = [publication.journal, `(${publication.year})`].filter(Boolean).join(' ');
 
     publicationDetails.innerHTML = `
-        <strong>Authors:</strong> ${publication.author}<br>
-        <strong>Published in:</strong> ${publishedInfo}<br>
+        <p class="grey-text no-margin">${publication.author}</p>
+        <p class="no-margin">${publishedInfo}</p>
         <a href="${publication.doi || publication.url}" target="_blank" class="doc-link">${publication.doi ? 'DOI' : 'PDF'}</a>
         <a class="cite-link">CITE</a>
     `;
@@ -214,6 +265,7 @@ function generatePublicationHtml(publication, publicationCard, publicationType) 
 function generateTalkHtml(talk, talkCard) {
     // Create a title element with an onclick event to open the modal in the talk card
     const titleElement = document.createElement('h3');
+    titleElement.classList.add('publication-title');
     
     titleElement.textContent = talk.title;
 
@@ -227,9 +279,17 @@ function generateTalkHtml(talk, talkCard) {
     // Truncate abstract if too long
     const talkAbstract = talk.abstract ? talk.abstract.substring(0, 200) + '...' : ''; 
 
+    const formattedDate = new Date(`${talk.year}-${talk.month}-${talk.day}`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    // talkDetails.innerHTML = `
+    //     ${talkAbstract}<br>
+    //     ${talk.year} - ${talk.journal}<br>
+    //     <a href="${talk.url}" target="_blank" class="doc-link">PDF</a>
+    //     <a class="cite-link">CITE</a>
+    // `;
+
     talkDetails.innerHTML = `
-        ${talkAbstract}<br>
-        ${talk.year} - ${talk.journal}<br>
+        <p class="grey-text no-margin">${formattedDate} • ${talk.journal}</p>
         <a href="${talk.url}" target="_blank" class="doc-link">PDF</a>
         <a class="cite-link">CITE</a>
     `;

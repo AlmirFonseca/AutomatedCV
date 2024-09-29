@@ -15,22 +15,33 @@
 
     <!-- Include Academicons CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" 
-          integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" 
-          crossorigin="anonymous">
+        integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" 
+        crossorigin="anonymous">
           
     <!-- Include Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" 
-          integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" 
-          crossorigin="anonymous">
+        integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" 
+        crossorigin="anonymous">
     
     <!-- Include Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+    <!-- Include Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+    
+    <!-- Include Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+    
 
     <!-- Local Stylesheet -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="website/css/styles.css">
 
     <!-- Local JavaScript -->
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="website/js/main.js"></script>
 
     <!-- Favicon -->
     <link rel="icon" href="../static/images/favicon.png" sizes="16x16" type="image/png">
@@ -41,7 +52,7 @@
     <header>
         <!-- Navigation Bar with Anchors to Sections -->
         <nav>
-            <p class="bold">Rodrigo S. Targino</p>
+            <a href="./index.html" class="bold nav-permanent">Rodrigo S. Targino</a>
 
             <a href="#personal-info-section">Home</a>
             <a href="#professional-experience-section">Experience</a>
@@ -51,9 +62,9 @@
             <a href="#students-section">Students</a>
             <a href="#teaching-section">Teaching</a>
             <a href="#contact-section">Contact</a>
-            <a href="..\static\author_data\RodrigoSTarginoCV.pdf">CV</a>
+            <a href=".\static\author_data\RodrigoSTarginoCV.pdf">CV</a>
 
-            <a id="search-button" href=".\search_page.html">
+            <a id="search-button" href=".\website\search_page.html">
                 <i class="fas fa-search"></i>
             </a>
 
@@ -72,8 +83,9 @@
                 <div id="personal-picture-container">
                     <img id="personal-picture" src="..\static\images\profile_picture.jpg" alt="Photo of Rodrigo S. Targino">
                 </div>
-                <h1 id="name"></h1>
-                <h3 id="title"></h3>
+                <h1 id="name" class="white-text"></h1>
+                <h3 id="title" class="semi-bold grey-text"></h3>
+                <h3 id="affiliation" class="semi-bold grey-text"></h3>
 
                 <ul id="personal-network">
                     <li>
@@ -111,72 +123,82 @@
 
             <div id="personal-info-right">
                 <div id="biography">
-                    <h2>Biography</h2>
+                    <h2 class="regular grey-text">Biography</h2>
                     <p id="biography-text"></p>
                 </div>
 
-                <div id="interests">
-                    <h3>Interests</h3>
-                    <ul id="interests-list"></ul>
-                </div>
+                
+                <div id="details-container">
+                    <div id="interests">
+                        <h3 class="bold grey-text">Interests</h3>
+                        <ul id="interests-list"></ul>
+                    </div>
 
-                <div id="education">
-                    <h3>Education</h3>
-                    <div id="education-list"></div>
+                    <div id="education">
+                        <h3 class="bold grey-text">Education</h3>
+                        <ul id="education-list"></ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Professional Experience Section -->
         <section id="professional-experience-section">
-            <h2>Professional Experience</h2>
+            <h2 class="regular grey-text">Professional Experience</h2>
             <ul id="professional-experience-list"></ul>
         </section>
 
         <!-- Talks Section -->
         <section id="talks-section">
-            <h2>Talks</h2>
+            <h2 class="regular grey-text">Talks</h2>
 
             <div id="talks-container">
                 <ul id="talks-list"></ul>
+                <br>
                 <a id="see-all-talks" href="search_page.html?type=talks" target="_blank">SEE ALL TALKS ></a>
             </div>
         </section>
 
         <!-- Publications Section -->
         <section id="publications-section">
-            <h2>Publications</h2>
+            <h2 class="regular grey-text">Publications</h2>
 
             <div id="publications-container">
                 <ul id="publications-list"></ul>
+                <br>
                 <a id="see-all-publications" href="search_page.html?type=publications" target="_blank">SEE ALL PUBLICATIONS ></a>
             </div>
         </section>
 
         <!-- Preprints Section -->
         <section id="preprints-section">
-            <h2>Preprints</h2>
+            <h2 class="regular grey-text">Preprints</h2>
 
             <div id="preprints-container">
                 <ul id="preprints-list"></ul>
+                <br>
                 <a id="see-all-preprints" href="search_page.html?type=preprints" target="_blank">SEE ALL PREPRINTS ></a>
         </section>
 
         <!-- Students Section -->
         <section id="students-section">
-            <h2>Students</h2>
-            <table id="students-table"></table>
+            <h2 class="regular grey-text">Students</h2>
+            <div class="table-container">
+                <table id="students-table"></table>
+            </div>
         </section>
 
         <!-- Teaching Section -->
         <section id="teaching-section">
-            <h2>Teaching</h2>
-            <table id="teaching-table"></table>
+            <h2 class="regular grey-text">Teaching</h2>
+            <div class="table-container">
+                <table id="teaching-table"></table>
+            </div>
         </section>
 
         <!-- Contact Section -->
         <section id="contact-section">
-            <h2>Contact</h2>
+            <h2 class="regular grey-text">Contact</h2>
 
             <div id="contact-container">
                 <p id="contact-email"></p>
