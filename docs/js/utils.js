@@ -187,7 +187,7 @@ function generatePublicationHtml(publication, publicationCard, publicationType) 
     publicationDetails.innerHTML = `
         <strong>Authors:</strong> ${publication.author}<br>
         <strong>Published in:</strong> ${publishedInfo}<br>
-        <a href="${publication.doi || publication.url}" target="_blank">${publication.doi ? 'DOI' : 'PDF'}</a> | 
+        <a href="${publication.doi || publication.url}" target="_blank" class="doc-link">${publication.doi ? 'DOI' : 'PDF'}</a>
         <a class="cite-link">CITE</a>
     `;
 
@@ -230,7 +230,7 @@ function generateTalkHtml(talk, talkCard) {
     talkDetails.innerHTML = `
         ${talkAbstract}<br>
         ${talk.year} - ${talk.journal}<br>
-        <a href="${talk.url}" target="_blank">PDF</a> |
+        <a href="${talk.url}" target="_blank" class="doc-link">PDF</a>
         <a class="cite-link">CITE</a>
     `;
 
@@ -317,7 +317,7 @@ function showArticleDetails(article, articleType) {
       <h3>Abstract</h3>
       <p>${article.abstract || 'No abstract available.'}</p>
       <p>${article.journal ? `${article.journal}, Volume ${article.volume}` : ''}</p>
-      <p><a href="${article.doi || article.url}" target="_blank">${article.doi ? 'DOI' : 'PDF'}</a></p>
+      <p><a href="${article.doi || article.url}" target="_blank" class="doc-link">${article.doi ? 'DOI' : 'PDF'}</a></p>
       <a class="cite-link">CITE</a>
     `;
     openDetailModal(article, articleType, content);

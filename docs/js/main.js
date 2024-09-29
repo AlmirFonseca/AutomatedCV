@@ -16,7 +16,10 @@ function populatePersonalInformation(personalData) {
     // Populate the name, title, and biography sections
     document.getElementById('name').innerHTML = personalData.name;
     document.getElementById('title').innerHTML = personalData.title;
-    document.getElementById('biography-text').innerHTML = personalData.biography;
+
+    let biographyParagraphs = personalData.biography.split(/\n/);
+    let biography = biographyParagraphs.map(paragraph => `<p class='biography-text'>${paragraph}</p>`).join('');
+    document.getElementById('biography-text').innerHTML = biography;
 
     // Populate the list of interests
     const interestsListElement = document.getElementById('interests-list');
@@ -49,6 +52,9 @@ function initializePageContent() {
 // Wait for the document to fully load before executing the initialization
 document.addEventListener('DOMContentLoaded', initializePageContent);
 
-
+document.getElementById('menu-toggle').addEventListener('click', function() {
+    const nav = document.querySelector('nav');
+    nav.classList.toggle('active');
+});
 
 
