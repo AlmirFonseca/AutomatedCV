@@ -1,5 +1,5 @@
-/* Variables */
-:root {
+/* Dark Theme Variables */
+:root.dark-theme {
     --navy-blue: rgb(39, 41, 53);
     --dark-blue: rgb(35, 37, 47);
     --hyperlink-blue: rgb(41, 98, 255);
@@ -10,12 +10,30 @@
     --white: rgb(255, 255, 255);
     --black: rgb(0, 0, 0);
     --card-gray: rgb(52, 58, 64);
+    --font-color: rgb(255, 255, 255);
+    --box-shadow-color: rgba(255, 255, 255, 0.11) ;
+}
+
+/* Light Theme Variables */
+:root.light-theme {
+    --navy-blue: rgb(255,255,255);
+    --dark-blue: rgb(247,247,247);
+    --hyperlink-blue: rgb(0, 120, 215);
+    --light-gray: rgb(0, 0, 0);
+    --modal-overlay: rgba(255, 255, 255, 0.7);
+    --table-light: rgb(255,255,255);
+    --table-dark: rgb(247,247,247);
+    --white: rgb(0, 0, 0);
+    --black: rgb(255, 255, 255);
+    --card-gray: rgb(255,255,255);
+    --font-color: rgb(0, 0, 0);
+    --box-shadow-color: rgba(0, 0, 0, 0.11);
 }
 
 /* General */
 * {
     font-family: roboto, sans-serif;
-    color: white;
+    color: var(--font-color);
 }
 
 body {
@@ -66,7 +84,7 @@ nav {
     align-items: center; /* Centraliza verticalmente */
     justify-content: flex-start; /* Alinha os itens à esquerda */
     padding: 10px 20px;
-    box-shadow: rgba(255, 255, 255, 0.11) 0px 2.625px 5.25px 0px;
+    box-shadow: var(--box-shadow-color) 0px 2px 4px 0px;
     background-color: var(--navy-blue);
     position: fixed; /* Navbar fixa no topo */
     top: 0; /* Fixa no topo da página */
@@ -82,14 +100,14 @@ nav p.bold {
     font-size: 1.5rem; /* Tamanho maior para o título */
     margin: 0 20px 0 0; /* Espaçamento do título para os links */
     font-weight: bold;
-    color: white; /* Cor branca para o texto */
+    color: var(--font-color);
     flex-shrink: 0; /* Não deixa o título encolher */
 }
 
 /* Estilização dos links de navegação */
 nav a {
     text-decoration: none;
-    color: white;
+    color: var(--font-color);
     font-size: 1rem;
     padding: 10px 10px; /* Espaçamento interno nos botões */
     transition: background-color 0.3s ease;
@@ -97,16 +115,9 @@ nav a {
     text-align: center; /* Centraliza o texto dentro do link */
 }
 
-/* Estilização do botão de busca */
-#search-button {
-    position: absolute;
-    right: 20px; /* Fixa o ícone de busca no canto direito */
-    padding: 10px 3px; /* Padding adicional no ícone de busca */
-}
-
 /* Estilo ao passar o mouse */
 nav a:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Efeito de hover */
+    background-color: var(--box-shadow-color); /* Altera a cor de fundo ao passar o mouse */
     border-radius: 5px; /* Bordas arredondadas */
 }
 
@@ -118,21 +129,52 @@ nav a, nav p {
     text-decoration: none !important; /* Remove o sublinhado padrão */
 }
 
-/* Estilização do ícone de busca */
-#search-button i {
-    font-size: 1.2rem; /* Aumenta o tamanho do ícone */
-    color: white;
-    padding: 0px 10px; /* Espaçamento interno */
+/* Container para os botões */
+#action-buttons {
+    position: absolute;
+    top: 10px; /* Alinhamento vertical dos botões */
+    right: 20px; /* Espaçamento do lado direito */
+    display: flex;
+    gap: 10px; /* Espaçamento entre os botões */
+}
+
+/* Estilo comum para os botões */
+.icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--navy-blue); /* Cor de fundo */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    padding: 10px 3px;
+}
+
+#action-buttons i {
+    padding: 4px;
+    color: var(--font-color);
+    font-size: 1.3rem;
+}
+
+
+.icon-button i {
+    font-size: 1.2rem; /* Tamanho dos ícones */
+    color: var(--white); /* Cor do ícone */
+}
+
+.icon-button:hover {
+    background: var(--box-shadow-color); /* Altera a cor de fundo ao passar o mouse */
 }
 
 /* Estilização do ícone de menu hamburguer (escondido por padrão) */
-#menu-toggle {
+.menu-toggle {
     display: none;
     position: absolute;
     right: 20px;
     font-size: 1.5rem;
     padding: 10px;
-    color: white;
+    color: var(--font-color);
 }
 
 
@@ -148,7 +190,7 @@ section {
 table {
     width: 100%;
     border-collapse: collapse;
-    color: white;
+    color: var(--font-color);
     text-align: left;
     font-family: Arial, sans-serif;
     background-color: transparent;
@@ -204,7 +246,7 @@ ul {
 }
 
 .white-text {
-    color: white;
+    color: var(--font-color);
 }
 
 /* Article-card title */
@@ -256,7 +298,7 @@ ul {
     max-width: 800px;
     background-color: var(--navy-blue);
     color: var(--light-gray);
-    box-shadow: rgba(255, 255, 255, 0.1) 0px 4px 8px 0px;
+    box-shadow: var(--box-shadow-color) 0px 4px 8px 0px;
 }
 
 pre {
@@ -301,7 +343,7 @@ pre {
 }
 
 .cite-link:hover, .doc-link:hover {
-    color: white;
+    color: var(--font-color);
     background-color: var(--hyperlink-blue);
 }
 
@@ -333,7 +375,7 @@ pre {
     font-size: 1.5rem; /* Tamanho maior para o título */
     margin: 0 20px 0 0; /* Espaçamento do título para os links */
     font-weight: bold;
-    color: white; /* Cor branca para o texto */
+    color: var(--font-color);
     flex-shrink: 0; /* Não deixa o título encolher */
     text-decoration: none; /* Remove o sublinhado */
 }
@@ -399,7 +441,7 @@ pre {
 
 
 /* Estilo para o ícone de menu hamburguer */
-#menu-toggle i {
+.menu-toggle i {
     font-size: 1.5rem;
 }
 
@@ -542,20 +584,14 @@ pre {
     margin-right: 0; /* Remove o espaçamento do último elemento */
 }
 
-#search-button {
-    position: absolute;
-    right: 20px; /* Reduz o espaçamento para garantir que o ícone de busca fique visível */
-    padding: 10px 3px; /* Padding adicional no ícone de busca */
-}
-
 /* Estilização do ícone de menu hamburguer */
-#menu-toggle {
+.menu-toggle {
     display: none;
     position: absolute;
     right: 20px; /* Reduz o espaçamento para garantir que o ícone do menu hamburguer fique visível */
     font-size: 1.5rem;
     padding: 10px;
-    color: white;
+    color: var(--font-color);
 }
 
 
@@ -572,7 +608,7 @@ pre {
     }
 
     /* Exibe o ícone de menu hamburguer */
-    #menu-toggle {
+    .menu-toggle {
         display: block;
         text-align: right;
         width: auto;
@@ -580,7 +616,7 @@ pre {
     }
 
     /* Exibe os links de navegação quando o menu estiver aberto */
-    nav.active a {
+    nav.active a.nav-options {
         display: block;
         margin: 10px 0; /* Espaçamento entre os links */
         width: 100%; /* Garante que a barra ocupe 100% da largura da tela */
@@ -596,9 +632,13 @@ pre {
         align-items: flex-start;
     }
 
-    #search-button {
-        position: static; /* Para deixar o ícone de busca alinhado abaixo também */
-        margin-top: 10px;
+    /* Ajuste para o container de botões de ação */
+    #action-buttons {
+        position: absolute;
+        top: 10px; /* Alinha verticalmente com o menu hamburguer */
+        right: 70px; /* Posiciona à esquerda do ícone hamburguer */
+        display: flex;
+        gap: 10px; /* Espaçamento entre os botões */
     }
 
     /* Ajuste do padding lateral nas seções */

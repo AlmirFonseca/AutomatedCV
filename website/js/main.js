@@ -93,9 +93,32 @@ function initializePageContent() {
 // Wait for the document to fully load before executing the initialization
 document.addEventListener('DOMContentLoaded', initializePageContent);
 
-document.getElementById('menu-toggle').addEventListener('click', function() {
+document.querySelector('.menu-toggle').addEventListener('click', () => {
     const nav = document.querySelector('nav');
     nav.classList.toggle('active');
 });
 
+// Theme Toggle Script
+document.addEventListener("DOMContentLoaded", () => {
+    const themeToggle = document.getElementById("theme-toggle-button");
+    const root = document.documentElement;
 
+    // Load saved theme preference
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+        root.classList.add(savedTheme);
+    }
+
+    // Toggle theme on button click
+    themeToggle.addEventListener("click", () => {
+        if (root.classList.contains("light-theme")) {
+            root.classList.remove("light-theme");
+            root.classList.add("dark-theme");
+            localStorage.setItem("theme", "dark-theme"); // Clear saved preference
+        } else {
+            root.classList.add("light-theme");
+            root.classList.remove("dark-theme");
+            localStorage.setItem("theme", "light-theme"); // Save preference
+        }
+    });
+});
