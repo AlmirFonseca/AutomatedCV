@@ -68,6 +68,48 @@ function populateContactInformation(contactData) {
         .bindPopup(`<b>${contactData.address}</b>`);
 }
 
+
+// Change the theme 
+function applyTheme(theme) {
+    const root = document.documentElement;
+    root.setAttribute('theme', theme);
+    localStorage.setItem('theme', theme); // Salva a preferência do usuário
+}
+
+// Detect user's system theme preference
+function detectSystemTheme() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+// Inicialize theme based on user preference or system theme
+function initializeTheme() {
+    const savedTheme = localStorage.getItem('theme'); // Verifica se o usuário já salvou uma preferência
+    if (savedTheme) {
+        applyTheme(savedTheme); // Usa a preferência salva
+    } else {
+        const systemTheme = detectSystemTheme(); // Usa o tema do sistema como padrão
+        applyTheme(systemTheme);
+    }
+}
+
+// Theme Toggle Script
+function toggleTheme() {
+    const themeToggle = document.getElementById('theme-toggle-button');
+    const root = document.documentElement;
+
+    // Load saved theme preference
+    initializeTheme();
+
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+        if (root.getAttribute('theme') === "light") {
+            applyTheme("dark");
+        } else {
+            applyTheme("light");
+        }
+    });
+}
+
 /**
  * Initialize the page content by populating personal data and rendering CSV tables and articles.
  */
@@ -88,6 +130,9 @@ function initializePageContent() {
 
     // Populate contact information
     populateContactInformation(personalData.contact_information);
+
+    // Toggle theme
+    toggleTheme();
 }
 
 // Wait for the document to fully load before executing the initialization
@@ -96,29 +141,4 @@ document.addEventListener('DOMContentLoaded', initializePageContent);
 document.querySelector('.menu-toggle').addEventListener('click', () => {
     const nav = document.querySelector('nav');
     nav.classList.toggle('active');
-});
-
-// Theme Toggle Script
-document.addEventListener("DOMContentLoaded", () => {
-    const themeToggle = document.getElementById("theme-toggle-button");
-    const root = document.documentElement;
-
-    // Load saved theme preference
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-        root.classList.add(savedTheme);
-    }
-
-    // Toggle theme on button click
-    themeToggle.addEventListener("click", () => {
-        if (root.classList.contains("light-theme")) {
-            root.classList.remove("light-theme");
-            root.classList.add("dark-theme");
-            localStorage.setItem("theme", "dark-theme"); // Clear saved preference
-        } else {
-            root.classList.add("light-theme");
-            root.classList.remove("dark-theme");
-            localStorage.setItem("theme", "light-theme"); // Save preference
-        }
-    });
 });

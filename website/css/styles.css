@@ -1,5 +1,5 @@
 /* Dark Theme Variables */
-:root.dark-theme {
+:root[theme="dark"] {
     --navy-blue: rgb(39, 41, 53);
     --dark-blue: rgb(35, 37, 47);
     --hyperlink-blue: rgb(41, 98, 255);
@@ -15,7 +15,7 @@
 }
 
 /* Light Theme Variables */
-:root.light-theme {
+:root[theme="light"] {
     --navy-blue: rgb(255,255,255);
     --dark-blue: rgb(247,247,247);
     --hyperlink-blue: rgb(0, 120, 215);
