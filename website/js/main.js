@@ -133,6 +133,15 @@ function initializePageContent() {
 
     // Toggle theme
     toggleTheme();
+
+    // Remove a tela de carregamento após todo o conteúdo ser carregado
+    const loadingOverlay = document.getElementById('loading-overlay');
+    if (loadingOverlay) {
+        // eait 0.3 second before removing the loading overlay
+        setTimeout(() => {
+            loadingOverlay.style.display = 'none';
+        }, 300);
+    }
 }
 
 // Wait for the document to fully load before executing the initialization

@@ -185,14 +185,26 @@ p, ul {
 }
 
 section {
-    padding: 50px 12%;    
+    padding: 50px 20%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem; /* Espaço entre as colunas */
+    flex-wrap: nowrap; /* Impede que as colunas quebrem linha */
 }
 
-@media (min-width: 1920px) {
-    section {
-        padding: 50px 30%; /* Aumenta o padding para telas ultrawide (acima de 1920px) */
-    }
+/* Coluna do título */
+.section-title {
+    flex: 0 0 30%; /* Fixa em 40% da largura do container */
+    max-width: 30%; /* Limita a largura da coluna */
 }
+
+/* Coluna do conteúdo */
+.section-content {
+    flex: 0 0 70%; /* Fixa em 60% da largura do container */
+    max-width: 70%; /* Limita a largura da coluna */
+}
+
 
 table {
     width: 100%;
@@ -610,12 +622,11 @@ pre {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Cor de fundo opaca */
+    background-color: rgba(0, 0, 0, 0.9); /* Cor de fundo opaca */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999; /* Garante que fique acima de outros elementos */
-    display: none; /* Inicialmente oculto */
 }
 
 /* Estilo para o loader (ícone de carregamento) */
@@ -683,8 +694,19 @@ pre {
 
     /* Ajuste do padding lateral nas seções */
     section {
+        flex-direction: column; /* Empilha as colunas */
         padding-left: 20px; /* Reduz o padding lateral à esquerda */
         padding-right: 20px; /* Reduz o padding lateral à direita */
+    }
+
+    .section-title {
+        flex: 0 0 100%; /* Ocupa 100% da largura em telas pequenas */
+        max-width: 100%; /* Garante que não exceda a largura da tela */
+    }
+
+    .section-content {
+        flex: 0 0 100%; /* Ocupa 100% da largura em telas pequenas */
+        max-width: 100%; /* Garante que não exceda a largura da tela */
     }
     
     #personal-info-section {
