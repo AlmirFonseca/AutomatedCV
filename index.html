@@ -49,12 +49,12 @@
 
     <body>
 
-        <header>
+        <header id="header">
             <!-- Navigation Bar with Anchors to Sections -->
             <nav>
                 <a href=".\index.html" class="bold nav-permanent">Rodrigo S. Targino</a>
 
-                <a class="nav-options" href="#">Home</a>
+                <a class="nav-options" href="#header">Home</a>
                 <a class="nav-options" href="#professional-experience-section">Experience</a>
                 <a class="nav-options" href="#talks-section">Talks</a>
                 <a class="nav-options" href="#publications-section">Publications</a>
@@ -68,9 +68,6 @@
                 <div id="action-buttons">
                     <a id="theme-toggle-button" class="icon-button">
                         <i class="fa fa-adjust"></i>
-                    </button>
-                    <a id="search-button" class="icon-button" href=".\search_page.html">
-                        <i class="fa fa-search"></i>
                     </a>
                 </div>
 
@@ -81,7 +78,13 @@
             </nav>
         </header>
 
+        
+
         <main>
+            <!-- Tela de Carregamento -->
+            <div id="loading-overlay">
+                <div class="loader"></div>
+            </div>
 
             <!-- Personal Information Section -->
             <section id="personal-info-section">
@@ -89,9 +92,9 @@
                     <div id="personal-picture-container">
                         <img id="personal-picture" src=".\static\images\profile_picture.jpg" alt="Photo of Rodrigo S. Targino">
                     </div>
-                    <h1 id="name" class="white-text"></h1>
-                    <h3 id="title" class="semi-bold grey-text"></h3>
-                    <h3 id="affiliation" class="semi-bold grey-text"></h3>
+                    <h2 id="name" class="white-text regular"></h2>
+                    <h4 id="title" class="semi-bold grey-text"></h4>
+                    <h4 id="affiliation" class="semi-bold grey-text"></h4>
 
                     <ul id="personal-network">
                         <li>
@@ -129,7 +132,7 @@
 
                 <div id="personal-info-right">
                     <div id="biography">
-                        <h2 class="regular grey-text">Biography</h2>
+                        <h1 class="regular grey-text">Biography</h1>
                         <p id="biography-text"></p>
                     </div>
 

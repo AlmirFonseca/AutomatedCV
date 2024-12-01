@@ -138,7 +138,27 @@ function initializePageContent() {
 // Wait for the document to fully load before executing the initialization
 document.addEventListener('DOMContentLoaded', initializePageContent);
 
+
 document.querySelector('.menu-toggle').addEventListener('click', () => {
     const nav = document.querySelector('nav');
     nav.classList.toggle('active');
+});
+
+// Seleciona todas as âncoras na navbar
+const navLinks = document.querySelectorAll('a[href^="#"]');
+
+// Adiciona um evento de clique em cada link
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault(); // Previne o comportamento padrão de navegação da âncora
+        
+        const targetId = link.getAttribute('href'); // Pega o id da âncora
+        const targetElement = document.querySelector(targetId); // Seleciona o elemento correspondente
+        
+        // Rola suavemente até o elemento
+        targetElement.scrollIntoView({
+            behavior: 'smooth', // Rola suavemente
+            block: 'start' // Alinha o topo do elemento com o topo da tela
+        });
+    });
 });
