@@ -83,8 +83,8 @@ main {
 nav {
     display: flex;
     align-items: center; /* Centraliza verticalmente */
-    justify-content: flex-start; /* Alinha os itens à esquerda */
-    padding: 10px 20px;
+    justify-content: center; /* Alinha os itens à esquerda */ 
+    padding: 10px 10%;
     box-shadow: var(--box-shadow-color) 0px 2px 4px 0px;
     background-color: var(--navy-blue);
     position: fixed; /* Navbar fixa no topo */
@@ -130,15 +130,6 @@ nav a, nav p {
     text-decoration: none !important; /* Remove o sublinhado padrão */
 }
 
-/* Container para os botões */
-#action-buttons {
-    position: absolute;
-    top: 10px; /* Alinhamento vertical dos botões */
-    right: 20px; /* Espaçamento do lado direito */
-    display: flex;
-    gap: 10px; /* Espaçamento entre os botões */
-}
-
 /* Estilo comum para os botões */
 .icon-button {
     display: flex;
@@ -149,33 +140,14 @@ nav a, nav p {
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease;
-    padding: 10px 3px;
-}
-
-#action-buttons i {
-    padding: 4px;
+    padding: 10px;
+    margin-left: 5rem;
+    font-size: 1.5rem; /* Tamanho dos ícones */    
     color: var(--font-color);
-    font-size: 1.3rem;
-}
-
-
-.icon-button i {
-    font-size: 1.2rem; /* Tamanho dos ícones */
-    color: var(--white); /* Cor do ícone */
 }
 
 .icon-button:hover {
     background: var(--box-shadow-color); /* Altera a cor de fundo ao passar o mouse */
-}
-
-/* Estilização do ícone de menu hamburguer (escondido por padrão) */
-.menu-toggle {
-    display: none;
-    position: absolute;
-    right: 20px;
-    font-size: 1.5rem;
-    padding: 10px;
-    color: var(--font-color);
 }
 
 
@@ -184,11 +156,11 @@ p, ul {
     line-height: 1.8;
 }
 
+
 section {
-    padding: 50px 20%;
+    padding: 50px 10%;
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    justify-content: center; /* Espaça as colunas à esquerda e à direita */
     gap: 1rem; /* Espaço entre as colunas */
     flex-wrap: nowrap; /* Impede que as colunas quebrem linha */
 }
@@ -197,14 +169,16 @@ section {
 .section-title {
     flex: 0 0 30%; /* Fixa em 40% da largura do container */
     max-width: 30%; /* Limita a largura da coluna */
+    max-width: 350px; /* Limita a largura da coluna */
 }
 
 /* Coluna do conteúdo */
 .section-content {
     flex: 0 0 70%; /* Fixa em 60% da largura do container */
     max-width: 70%; /* Limita a largura da coluna */
-}
+    max-width: 750px; /* Limita a largura da coluna */
 
+}
 
 table {
     width: 100%;
@@ -567,7 +541,7 @@ pre {
 #personal-info-section {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Espaça os elementos à esquerda e à direita */
+    justify-content: center; /* Espaça os elementos à esquerda e à direita */
     /* padding: 50px; */
 }
 
@@ -577,7 +551,6 @@ pre {
     align-items: center; /* Centraliza o conteúdo horizontalmente */
     width: 100%; /* Para telas pequenas */
     max-width: 400px; /* Limita a largura da coluna à esquerda */
-    margin: 0 auto; /* Centraliza a coluna esquerda */
 }
 
 #personal-info-right {
@@ -660,8 +633,10 @@ pre {
 
     /* Exibe o ícone de menu hamburguer */
     .menu-toggle {
+        position: absolute;
         display: block;
         text-align: right;
+        top: 10px; /* Ajusta o ícone de menu hamburguer */
         width: auto;
         right: 20px; /* Ajusta o ícone de menu hamburguer */
     }
@@ -684,12 +659,11 @@ pre {
     }
 
     /* Ajuste para o container de botões de ação */
-    #action-buttons {
+    .icon-button {
         position: absolute;
-        top: 10px; /* Alinha verticalmente com o menu hamburguer */
+        top: 12px; /* Posiciona os botões no topo da página */
         right: 70px; /* Posiciona à esquerda do ícone hamburguer */
-        display: flex;
-        gap: 10px; /* Espaçamento entre os botões */
+        width: auto; /* Ajusta a largura automaticamente */
     }
 
     /* Ajuste do padding lateral nas seções */
