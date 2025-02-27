@@ -152,11 +152,3 @@ preprints %>%
   # filter(bibtype %in% c("TechReport", "Unpublished")) %>%
   arrange(desc(issued))
 ```
-
-
-```{r, include=FALSE}
-# Makes a copy of the CV in the author data
-file.copy("RodrigoSTarginoCV_short.pdf",
-          overwrite = TRUE,
-          to = "../static/author_data")
-```

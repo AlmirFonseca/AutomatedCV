@@ -254,10 +254,3 @@ talks %>%
 ```
 
 (\*) Poster presentations.
-
-```{r, include=FALSE}
-# Makes a copy of the CV to update the website
-file.copy("RodrigoSTarginoCV.pdf",
-          overwrite = TRUE,
-          to = "../static/author_data")
-```
