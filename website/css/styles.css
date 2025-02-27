@@ -57,22 +57,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 47.25px;
+    font-size: 36px;
     color: var(--light-gray);
     font-weight: 400;
     margin: 10px 0px;
 }
 
 h2 {
-    font-size: 36.75px;
+    font-size: 28px;
 }
 
 h3 {
-    font-size: 21px;
+    font-size: 24px;
 }
 
 h4 {
-    font-size: 18.75px;
+    font-size: 18px;
 }
 
 main {
@@ -109,7 +109,7 @@ nav p.bold {
 nav a {
     text-decoration: none;
     color: var(--font-color);
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 10px 10px; /* Espaçamento interno nos botões */
     transition: background-color 0.3s ease;
     flex-shrink: 0; /* Evita que os links encolham */
@@ -152,8 +152,8 @@ nav a, nav p {
 
 
 p, ul {
-    font-size: 21px;
-    line-height: 1.8;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 
@@ -205,6 +205,7 @@ td, th {
     padding: 10px;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
+    font-size: 14px;
 }
 
 tbody tr td {
@@ -416,7 +417,7 @@ pre {
 }
 
 #education-list li .education-institution {
-    font-size: 19px;
+    font-size: 16px;
 }
     
 #interests-list {
@@ -527,8 +528,8 @@ pre {
 }
 
 #personal-network i {
-    font-size: 42px;
-    line-height: 42px;
+    font-size: 36px;
+    line-height: 36px;
     color: var(--hyperlink-blue);
     padding: 0 5px;
     transition: all 0.1s ease-in-out;
