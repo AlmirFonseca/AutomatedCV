@@ -100,18 +100,46 @@ A ferramenta AutomatedCV foi desenvolvida para facilitar a gestão e exibição 
 1. **Atualize os Arquivos de Dados**:
     - Adicione ou modifique suas informações acadêmicas nos arquivos CSV, JSON e BibTeX dentro da pasta `static`.
     - As fontes de inserção são os arquivos na pasta `static/author_data` e os arquivos BibTeX na pasta `static/bib_files`.
+    
+        - `static/author_data`:
+            - `awards.csv`: Prêmios e distinções recebidos.
+            - `editorial.csv`: Atividades editoriais realizadas.
+            - `education.csv`: Formação acadêmica.
+            - `grants.csv`: Bolsas e financiamentos recebidos.
+            - `personal_data.json`: Informações pessoais do autor.
+            - `professional_experience.csv`¹: Experiências profissionais e acadêmicas.
+            - `students.csv`: Lista de alunos orientados.
+            - `teaching_experience.csv`: Experiências de ensino.
+            - `visits.csv`: Visitas acadêmicas realizadas.
+        - `static/bib_files`:
+            - `in_preparation.bib`: Artigos em preparação.
+            - `preprints.bib`: Preprints (artigos não publicados).
+            - `publications.bib`: Publicações.
+            - `talks.bib`: Seminários e palestras.
+            - `thesis.bib`: Teses.
+    
+    > **Atenção**: Mantenha a formatação correta dos arquivos para garantir que os dados sejam processados corretamente.
+
+    > (1) O arquivo `professional_experience.csv` permite apontar o cargo atual, não demarcando uma data de término.
 
 2. **Execute o Script de Atualização**:
-    - Navegue até o diretório raiz do projeto e execute o script `updateCV.sh` para processar os novos dados e atualizar os PDFs do currículo.
+    - Navegue até o diretório raiz do projeto e execute o script `updateCVfiles.sh` para processar os novos dados e atualizar os PDFs do currículo.
+
     ```bash
-    ./updateCV.sh
+    ./updateCVfiles.sh
     ```
 
 3. **Verifique os Arquivos Gerados**:
     - Certifique-se de que os arquivos `RodrigoSTarginoCV.pdf` e `RodrigoSTarginoCV_short.pdf` foram atualizados corretamente na pasta `src`.
 
 4. **Atualize o Site**:
-    - Commit e push as mudanças para o repositório GitHub para que o site seja atualizado automaticamente no GitHub Pages.
+    - Add, Commit e Push das mudanças para o repositório GitHub para que o site seja atualizado automaticamente no GitHub Pages. Para isso, execute manualmente os comandos ou invoque o arquivo `updateWebsite.sh`:
+
+    ```bash
+    ./updateWebsite.sh
+    ```
+
+    - Uma vez atualizado, as mudanças ficam disponíveis em, aproximadamente, 2 min no site.
 
 5. **Documente as Mudanças**:
     - Atualize a documentação do projeto (`README.md`) para refletir quaisquer mudanças significativas na estrutura ou no processo de atualização.
