@@ -51,7 +51,7 @@
         "ID": "nieto2021"
     },
     "merkle2020bayesian": {
-        "abstract": "We propose a two stage procedure for the estimation of the parameters of a fairly general, continuous-time stochastic volatility model. An important ingredient of the proposed method is the Cuchiero\u2013Teichmann volatility estimator, which is based on Fourier transforms and provides a continuous-time estimate of the latent process. This estimate is then used to construct an approximate likelihood for the parameters of interest, whose restrictions are taken into account through prior distributions. The procedure is shown to be highly successful for constructing the posterior distribution of the parameters of a Heston model, while limited success is achieved when applied to the highly parametrized exponential-Ornstein\u2013Uhlenbeck.",
+        "abstract": "We propose a two stage procedure for the estimation of the parameters of a fairly general, continuous-time stochastic volatility model. An important ingredient of the proposed method is the Cuchiero–Teichmann volatility estimator, which is based on Fourier transforms and provides a continuous-time estimate of the latent process. This estimate is then used to construct an approximate likelihood for the parameters of interest, whose restrictions are taken into account through prior distributions. The procedure is shown to be highly successful for constructing the posterior distribution of the parameters of a Heston model, while limited success is achieved when applied to the highly parametrized exponential-Ornstein–Uhlenbeck.",
         "doi": "https://doi.org/10.1016/j.spl.2019.108600",
         "publisher": "Elsevier",
         "year": "2020",
@@ -92,7 +92,7 @@
         "ID": "targino2017optimal"
     },
     "peters2017full": {
-        "abstract": "We revisit the gamma\u2013gamma Bayesian chain-ladder (BCL) model for claims reserving in non-life insurance. This claims reserving model is usually used in an empirical Bayesian way using plug-in estimates for the variance parameters. The advantage of this empirical Bayesian framework is that allows us for closed form solutions. The main purpose of this paper is to develop the full Bayesian case also considering prior distributions for the variance parameters and to study the resulting sensitivities. ",
+        "abstract": "We revisit the gamma–gamma Bayesian chain-ladder (BCL) model for claims reserving in non-life insurance. This claims reserving model is usually used in an empirical Bayesian way using plug-in estimates for the variance parameters. The advantage of this empirical Bayesian framework is that allows us for closed form solutions. The main purpose of this paper is to develop the full Bayesian case also considering prior distributions for the variance parameters and to study the resulting sensitivities. ",
         "doi": "http://dx.doi.org/10.1016/j.insmatheco.2016.12.007",
         "publisher": "Elsevier",
         "year": "2017",

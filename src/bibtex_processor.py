@@ -41,7 +41,7 @@ def save_bibtex_as_json(bibtex_entries, json_path):
 
     # Save the dictionary as a JSON file
     with open(json_path, 'w', encoding='utf-8') as json_file:
-        json.dump(entries_dict, json_file, indent=4)
+        json.dump(entries_dict, json_file, indent=4, ensure_ascii=False)
         print(f"Entries saved to {json_file.name}")
 
 def split_bibtex_entries(bibtex_entries, output_dir):
