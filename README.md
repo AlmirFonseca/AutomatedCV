@@ -63,14 +63,9 @@ AutomatedCV/
 │   │   ├───talks.bib                   # Seminários e palestras
 │   │   └───thesis.bib                  # Teses
 │   │
-│   ├───images                          # Imagens usadas no CV e no site
-│   │   ├───favicon.png                 # Ícone do site
-│   │   └───profile_picture.jpg         # Foto de perfil do autor
-│   │
-│   ├───publication                     # Diretório de publicações (BibTeX)
-│   │   └───bibtex                      # Arquivos BibTeX de publicações
-│   └───talk                            # Diretório de seminários (BibTeX)
-│       └───bibtex                      # Arquivos BibTeX de seminários
+│   └───images                          # Imagens usadas no CV e no site
+│       ├───favicon.png                 # Ícone do site
+│       └───profile_picture.jpg         # Foto de perfil do autor
 │           
 └───website                             # Código fonte do website (HTML, CSS, JS)
     ├───css                             # Estilos do website
@@ -82,38 +77,43 @@ AutomatedCV/
 
 ```
 
-## Todo List
+## Como a Ferramenta AutomatedCV Funciona
 
-ToDo List:
+### Objetivo
 
-- [x] Criar o repositório no GitHub.
+A ferramenta AutomatedCV foi desenvolvida para facilitar a gestão e exibição de conquistas acadêmicas de forma automatizada. O objetivo principal é permitir que pesquisadores e acadêmicos mantenham seus currículos atualizados com o mínimo de esforço, utilizando arquivos BibTeX para gerenciar publicações e outras realizações acadêmicas.
 
-- [x] Modelar a estrutura de pastas e arquivos.
+### Pipeline de Dados
 
-- [x] Desenvolver o input dos arquivos BibTeX, com a segmentação das referências e output em formato universal.
+1. **Entrada de Dados**: O usuário insere suas informações acadêmicas em arquivos BibTeX, CSV e JSON. Esses arquivos são organizados em diretórios específicos dentro da pasta `static`.
 
-- [x] Desenvolver a página web para exibição das conquistas acadêmicas, com arcabouço, estilização e conteúdo dinâmico (conforme os arquivos BibTeX).
+2. **Processamento de Dados**: O módulo `bibtex_processor.py` é responsável por processar os arquivos BibTeX, segmentando as referências e convertendo-as em formatos universais (JSON).
 
-- [x] Hospedar a página web no GitHub Pages.
+3. **Geração de Currículo**: Utilizando arquivos R Markdown (`RodrigoSTarginoCV.Rmd` e `RodrigoSTarginoCV_short.Rmd`), a ferramenta gera versões completas e curtas do currículo em PDF.
 
-- [x] Atualizar a ferramenta de exportação de currículo em PDF.
+4. **Atualização Automática**: O script `updateCV.sh` automatiza a atualização do currículo, instalando bibliotecas necessárias, processando novos dados e regenerando os PDFs.
 
-- [x] Desenvolver a página principal do currículo.
+5. **Exibição na Web**: As informações processadas são exibidas em uma página web hospedada no GitHub Pages. A estrutura do site é gerida por arquivos HTML, CSS e JavaScript localizados na pasta `website`.
 
-- [ ] Desenvolver a página de busca de publicações.
+### Tutorial: Como Atualizar o Currículo
 
-- [ ] Desenvolver a pipeline de atualização da página web e do currículo, simplificando o processo de atualização dos conteúdos.
+1. **Atualize os Arquivos de Dados**:
+    - Adicione ou modifique suas informações acadêmicas nos arquivos CSV, JSON e BibTeX dentro da pasta `static`.
+    - As fontes de inserção são os arquivos na pasta `static/author_data` e os arquivos BibTeX na pasta `static/bib_files`.
 
-- [ ] Documentar o processo de desenvolvimento e a estrutura do projeto (bibliotecas, arquivos, pastas, etc).
+2. **Execute o Script de Atualização**:
+    - Navegue até o diretório raiz do projeto e execute o script `updateCV.sh` para processar os novos dados e atualizar os PDFs do currículo.
+    ```bash
+    ./updateCV.sh
+    ```
 
-- [ ] Criar o manual de instruções para a atualização dos conteúdos.
+3. **Verifique os Arquivos Gerados**:
+    - Certifique-se de que os arquivos `RodrigoSTarginoCV.pdf` e `RodrigoSTarginoCV_short.pdf` foram atualizados corretamente na pasta `src`.
 
-## Reminders
+4. **Atualize o Site**:
+    - Commit e push as mudanças para o repositório GitHub para que o site seja atualizado automaticamente no GitHub Pages.
 
-- [x] Desenvolver ícone para a página web (.ico)
+5. **Documente as Mudanças**:
+    - Atualize a documentação do projeto (`README.md`) para refletir quaisquer mudanças significativas na estrutura ou no processo de atualização.
 
-- [ ] Alterar link do cv após o deploy (transferência de repositório)
-
-## Contato
-
-Em caso de dúvidas, entre em contato com Gustavo Rocha e Almir Fonseca.
+Seguindo esses passos, você garantirá que seu currículo esteja sempre atualizado e disponível tanto em formato PDF quanto na web.
