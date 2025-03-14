@@ -22,8 +22,6 @@ AutomatedCV/
 ├───src                                 # Código fonte da ferramenta de automação
 │   ├───bibtex_processor.py             # Módulo para processar arquivos BibTeX
 │   ├───requirements.txt                # Dependências do projeto
-│   ├───RodrigoSTarginoCV.pdf           # Currículo completo em PDF gerado
-│   ├───RodrigoSTarginoCV.Rmd           # Arquivo fonte R Markdown para geração do CV completo
 │   ├───RodrigoSTarginoCV_short.pdf     # Versão curta do currículo em PDF
 │   ├───RodrigoSTarginoCV_short.Rmd     # Arquivo fonte R Markdown para geração do CV curto
 │   └───__init__.py                     # Arquivo de inicialização do pacote
@@ -130,7 +128,7 @@ A ferramenta AutomatedCV foi desenvolvida para facilitar a gestão e exibição 
     ```
 
 3. **Verifique os Arquivos Gerados**:
-    - Certifique-se de que os arquivos `RodrigoSTarginoCV.pdf` e `RodrigoSTarginoCV_short.pdf` foram atualizados corretamente na pasta `src`.
+    - Certifique-se de que os arquivos `RodrigoSTarginoCV.pdf` e `RodrigoSTarginoCV_short.pdf` foram atualizados corretamente na pasta `static/author_data`.
 
 4. **Atualize o Site**:
     - Add, Commit e Push das mudanças para o repositório GitHub para que o site seja atualizado automaticamente no GitHub Pages. Para isso, execute manualmente os comandos ou invoque o arquivo `updateWebsite.sh`:
