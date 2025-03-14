@@ -1,6 +1,6 @@
 # AutomatedCV
 
-Link do website: [Currículo - Rodrigo S. Targino](https://almirfonseca.github.io/AutomatedCV/)
+Link do website: [Currículo - Rodrigo S. Targino](https://rtargino.github.io/website/)
 
 # Projeto de Desenvolvimento de Software - AutomatedCV
 
@@ -11,7 +11,7 @@ Esse projeto tem como objetivo a criação de uma ferramenta automatizada para g
 A estrutura de arquivos do projeto é a seguinte:
 
 ```bash
-AutomatedCV/
+website/ (root)
 │   ├───.gitignore                      # Arquivos e pastas a serem ignorados pelo Git
 │   ├───index.html                      # Página inicial da interface web
 │   ├───LICENSE                         # Licença do projeto (Padrão Apache 2.0)
