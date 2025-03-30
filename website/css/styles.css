@@ -179,8 +179,9 @@ section {
     max-width: 750px; /* Limita a largura da coluna */
 }
 
-section .results-section {
+section.results-section {
     justify-content: flex-start; /* Alinha o conteúdo à esquerda */
+    flex-grow: 1; /* Permite que a seção cresça */
 }
 
 table {
