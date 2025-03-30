@@ -177,7 +177,10 @@ section {
     flex: 0 0 70%; /* Fixa em 60% da largura do container */
     max-width: 70%; /* Limita a largura da coluna */
     max-width: 750px; /* Limita a largura da coluna */
+}
 
+section .results-section {
+    justify-content: flex-start; /* Alinha o conteúdo à esquerda */
 }
 
 table {
