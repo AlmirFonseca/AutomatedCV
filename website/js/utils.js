@@ -279,8 +279,18 @@ function generateTalkHtml(talk, talkCard) {
     // Truncate abstract if too long
     const talkAbstract = talk.abstract ? talk.abstract.substring(0, 200) + '...' : ''; 
 
-    const formattedDate = new Date(`${talk.year}-${talk.month}-${talk.day}`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-
+    // Format full date if provided, else just year
+    var formattedDate = 'Unknown Date';
+    if (talk.year && talk.month && talk.day) {
+        formattedDate = new Date(`${talk.year}-${talk.month}-${talk.day}`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+    else if (talk.year && talk.month) {
+        formattedDate = new Date(`${talk.year}-${talk.month}`).toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+    }
+    else if (talk.year) {
+        formattedDate = new Date(`${talk.year}`).toLocaleDateString('en-US', { year: 'numeric' });
+    }
+    
     // talkDetails.innerHTML = `
     //     ${talkAbstract}<br>
     //     ${talk.year} - ${talk.journal}<br>
